@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 import Icons from "./icons"
 
 import * as S from "./styled"
+import getThemeColor from "../../utils/getThemeColor"
 
 const MenuBar = () => {
   const [theme, setTheme] = useState(null)
@@ -22,12 +23,26 @@ const MenuBar = () => {
   return (
     <S.MenuBarWrapper>
       <S.MenuBarGroup>
-        <S.MenuBarLink to="/" title="Voltar para Home">
+        <S.MenuBarLink
+          to="/"
+          cover
+          direction="right"
+          bg={getThemeColor()}
+          duration={0.6}
+          title="Voltar para Home"
+        >
           <S.MenuBarItem>
             <Icons.Home />
           </S.MenuBarItem>
         </S.MenuBarLink>
-        <S.MenuBarLink to="/search/" title="Pesquisar">
+        <S.MenuBarLink
+          to="/search/"
+          cover
+          direction="right"
+          bg={getThemeColor()}
+          duration={0.6}
+          title="Pesquisar"
+        >
           <S.MenuBarItem>
             <Icons.Search />
           </S.MenuBarItem>
@@ -48,6 +63,7 @@ const MenuBar = () => {
           onClick={() => {
             window.__setPreferredDisplay(isListMode ? "grid" : "list")
           }}
+          className="display"
         >
           {isListMode ? <Icons.Grid /> : <Icons.List />}
         </S.MenuBarItem>
